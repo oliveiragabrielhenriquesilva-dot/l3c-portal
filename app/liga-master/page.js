@@ -1,0 +1,3 @@
+import {PageHero} from '../../components/SiteChrome';
+export const metadata={title:'Liga Master',description:'Portal da Liga Master: jogos, classificação, líderes e equipes.'};
+export default function Master(){return <main><PageHero title="Liga Master" subtitle="Portal da Liga Master."/><section className="section shell"><div className="article-card"><h2>Liga Master 2026</h2><p>Estrutura preservada para integração com a temporada Master oficial do L3C Stats.</p></div></section></main>}

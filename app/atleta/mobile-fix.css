@@ -1,0 +1,94 @@
+/* 0.5.20.14 — exclusivamente mobile, preservar desktop e Área da Equipe */
+.l3a-mobile-bottom,.l3a-mobile-more{display:none}
+@media(max-width:900px){
+ .l3a{overflow-x:clip;max-width:100vw}
+ .l3a-layout,.l3a-main,.l3a-hero,.l3a-hero-copy{min-width:0;max-width:100%}
+ .l3a-mobile-tabs{display:none!important}
+ .l3a-mobile-bottom{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;bottom:env(safe-area-inset-bottom,0px);z-index:80;background:#071726;border-top:1px solid #37576d;box-shadow:0 -10px 24px #0007;padding:7px 7px max(7px,env(safe-area-inset-bottom,0px));gap:4px}
+ .l3a-mobile-bottom button{background:transparent;color:#bfd3e2;border:0;border-radius:9px;padding:7px 2px;min-width:0;min-height:51px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font:inherit;font-size:10px;font-weight:750;cursor:pointer}
+ .l3a-mobile-bottom button.on{color:#fff;background:#57351f;box-shadow:inset 0 2px #ff762b}
+ .l3a-mobile-bottom button svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+ .l3a-mobile-more{display:grid;position:fixed;bottom:calc(76px + env(safe-area-inset-bottom,0px));left:10px;right:10px;z-index:81;padding:12px;gap:7px;border:1px solid #426078;border-radius:14px;background:#0c2336;box-shadow:0 0 0 9999px #0005,0 12px 28px #0008}
+ .l3a-mobile-more button{border:1px solid #315069;border-radius:9px;background:#102d44;color:#fff;text-align:left;font:inherit;font-weight:750;padding:13px;min-height:46px}
+ .l3a-mobile-more form button{width:100%;color:#ffb38b}
+ .l3a-main{padding-bottom:calc(93px + env(safe-area-inset-bottom,0px))}
+ .l3a .athlete-wallet-area,.l3a .athlete-wallet-card{max-width:100%;min-width:0}
+ .l3a .athlete-wallet-mobile-actions button{min-height:46px}
+}
+@media(max-width:600px){
+ .l3a .l3a-top{grid-template-columns:minmax(0,1fr) auto;gap:7px 10px;padding:9px 12px}
+ .l3a .l3a-top-brand{min-width:0}.l3a .l3a-top-title{min-width:0}
+ .l3a .l3a-top-user{max-width:42px}.l3a .l3a-top-avatar{width:32px;height:32px}
+ .l3a .l3a-account{font-size:10px;padding:8px 9px}
+ .l3a-layout{width:calc(100% - 20px);margin:10px auto}
+ .l3a-hero{display:grid;grid-template-columns:78px minmax(0,1fr);gap:12px;padding:12px}
+ .l3a-photo{width:78px;height:101px;min-width:0}
+ .l3a-hero h1{font-size:clamp(15px,4.3vw,20px);line-height:1.18;overflow-wrap:break-word;word-break:normal;white-space:normal;margin:6px 0;max-width:100%}
+ .l3a-hero-copy>small{font-size:9px}.l3a-hero p{font-size:11px}
+ .l3a-hero-badges{margin-top:7px}
+ .l3a .athlete-wallet-area{padding:12px!important}
+ .l3a .athlete-wallet-heading h2{font-size:21px}
+ .l3a .athlete-wallet-tabs{max-width:100%;padding-bottom:8px;scroll-snap-type:x mandatory}
+ .l3a .athlete-wallet-tabs button{min-width:126px;scroll-snap-align:start}
+ .l3a .athlete-wallet-person{gap:9px;padding:8px 10px 12px}
+ .l3a .athlete-wallet-person-data h3{font-size:clamp(13px,3.9vw,18px);line-height:1.18}
+ .l3a .athlete-wallet-photo{width:76px;height:98px}
+ .l3a .athlete-wallet-team img{width:34px;height:34px}
+ .l3a .athlete-wallet-banner,.l3a .athlete-wallet-brand,.l3a .athlete-wallet-footer{overflow-wrap:anywhere}
+ .l3a .athlete-wallet-details{gap:8px;padding:11px}
+ .l3a .athlete-wallet-status{font-size:10px}
+ .l3a .athlete-wallet-mobile-actions{max-width:100%}
+}
+@media(max-width:360px){.l3a .l3a-top-brand img{width:34px;height:34px}.l3a .l3a-top-title b,.l3a .l3a-top-brand b{font-size:11px}.l3a-hero{grid-template-columns:65px minmax(0,1fr)}.l3a-photo{width:65px;height:86px}.l3a-hero h1{font-size:15px}}
+@media print{.l3a-mobile-bottom,.l3a-mobile-more{display:none!important}}
+
+/* 0.5.20.14.1 — correções finais de leitura em telefones estreitos.
+   Escopo intencional: somente Portal do Atleta e viewport mobile. */
+@media (max-width:600px) {
+  .l3a, .l3a * { box-sizing:border-box; }
+  .l3a { width:100%; max-width:100%; overflow-x:clip; }
+  .l3a .l3a-top { min-height:0; height:auto; padding:8px 10px; gap:5px 8px; }
+  .l3a .l3a-top-brand { gap:6px; }
+  .l3a .l3a-top-brand img { width:34px; height:34px; }
+  .l3a .l3a-top-brand b, .l3a .l3a-top-title b { font-size:10px; }
+  .l3a .l3a-top-brand small, .l3a .l3a-top-title small { font-size:8px; }
+  .l3a .l3a-top-avatar { width:29px; height:29px; }
+  .l3a .l3a-account { padding:7px 8px; font-size:9px; }
+  .l3a .l3a-layout { width:calc(100% - 16px); max-width:100%; margin:8px auto 0; }
+  .l3a .l3a-main, .l3a .l3a-hero, .l3a .l3a-hero-copy { width:100%; min-width:0; max-width:100%; }
+  .l3a .l3a-hero { display:grid; grid-template-columns:64px minmax(0,1fr); gap:9px; padding:10px; align-items:center; }
+  .l3a .l3a-photo { width:64px; height:83px; }
+  .l3a .l3a-hero-copy { overflow:visible; }
+  .l3a .l3a-hero h1 { display:block; width:100%; max-width:100%; margin:4px 0 5px; font-size:clamp(13px,3.7vw,18px); line-height:1.18; white-space:normal!important; overflow:visible!important; text-overflow:clip!important; overflow-wrap:anywhere!important; word-break:normal; hyphens:auto; }
+  .l3a .l3a-hero-copy>small { font-size:8px; line-height:1.25; display:block; }
+  .l3a .l3a-hero p { font-size:10px; }
+  .l3a .l3a-hero-badges { gap:4px; margin-top:6px; }
+  .l3a .l3a-hero-badges span { font-size:9px; padding:4px 6px; }
+  .l3a .l3a-overview-grid, .l3a .l3a-section, .l3a .l3a-table, .l3a .athlete-wallet-area { min-width:0; max-width:100%; }
+  .l3a .l3a-overview-grid { grid-template-columns:minmax(0,1fr); }
+  .l3a .l3a-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+  .l3a .l3a-metrics>div { min-width:0; padding:11px 9px; overflow-wrap:anywhere; }
+  .l3a .l3a-metrics small { font-size:10px; }
+  .l3a .l3a-metrics b { font-size:clamp(18px,6vw,23px); }
+  .l3a .l3a-section, .l3a .athlete-wallet-area { padding:12px; }
+  .l3a .l3a-mobile-bottom { width:100%; max-width:100%; }
+  .l3a .l3a-main { padding-bottom:calc(100px + env(safe-area-inset-bottom,0px)); }
+  .l3a .l3a-entries>div { min-width:0; flex-wrap:wrap; }
+}
+@media (max-width:360px) {
+  .l3a .l3a-hero { grid-template-columns:58px minmax(0,1fr); gap:8px; padding:9px; }
+  .l3a .l3a-photo { width:58px; height:76px; }
+  .l3a .l3a-hero h1 { font-size:13px; }
+  .l3a .l3a-top { padding:7px 8px; }
+}
+
+/* Últimos jogos: leitura sem deslocamento horizontal no celular. */
+@media(max-width:600px){
+ .l3a-table{width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+ .l3a-table table{min-width:0;width:100%;table-layout:fixed}
+ .l3a-table td,.l3a-table th{padding:10px 5px;font-size:10px;white-space:normal;overflow-wrap:anywhere}
+ .l3a-table td:nth-child(2),.l3a-table th:nth-child(2){width:42%}
+ .l3a-table td:first-child,.l3a-table th:first-child{width:23%}
+ .l3a-entries>div{align-items:flex-start}
+ .l3a-entries>div>div{min-width:0;overflow-wrap:anywhere}
+}

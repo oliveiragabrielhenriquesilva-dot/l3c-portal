@@ -1,0 +1,1 @@
+export default function Loading(){return <main className="portal-route-loading" role="status" aria-live="polite"><span className="navigation-spinner" aria-hidden="true"/><h1>Carregando página…</h1><p>Aguarde enquanto buscamos os dados da competição.</p></main>}
