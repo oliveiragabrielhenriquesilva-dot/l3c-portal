@@ -1,6 +1,5 @@
 'use client';
 import {usePathname,useSearchParams} from 'next/navigation';
-import NavigationFeedback from './NavigationFeedback';
 import {navigationContext} from '../lib/navigation-context';
 import {Header,Footer} from './SiteChrome';
 
@@ -20,8 +19,8 @@ export default function Chrome({children,scopes=[]}){
   const p=usePathname()||'/';
   const search=useSearchParams();
   const standalone=p.startsWith('/painel-equipe')||p.startsWith('/atleta')||p.startsWith('/entrar')||p.startsWith('/cadastro')||p.startsWith('/minha-conta');
-  if(standalone)return <><NavigationFeedback/>{children}</>;
+  if(standalone)return <>{children}</>;
   const key=activeScopeKey(p,search,scopes);
   const navigation=navigationContext(p,search,scopes.find(scope=>scope.key===key));
-  return <><NavigationFeedback/><Header path={p} scopes={scopes} activeKey={key} navigation={navigation}/> {children}<Footer navigation={navigation}/></>;
+  return <><Header path={p} scopes={scopes} activeKey={key} navigation={navigation}/> {children}<Footer navigation={navigation}/></>;
 }
