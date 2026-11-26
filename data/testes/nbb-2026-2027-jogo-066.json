@@ -1,0 +1,321 @@
+{
+  "schemaVersion": "l3c-nbb-mesa-fixture/1.0",
+  "fixtureId": "TEST-NBB-2026-2027-JOGO-066",
+  "purpose": "Testar a Mesa Offline+Sync sem afetar competições oficiais",
+  "productionSafe": false,
+  "importPolicy": {
+    "allowedEnvironment": "HOMOLOGACAO_OU_BANCO_ISOLADO",
+    "mustNotPublish": true,
+    "mustNotCountInRankings": true,
+    "mustNotExportOfficialResults": true,
+    "upsertByExternalKey": true
+  },
+  "source": {
+    "provider": "Liga Nacional de Basquete",
+    "gameUrl": "https://lnb.com.br/partidas/nbb-2026-2027-itatiaiucu-cruzeiro-basquete-x-basquete-cearense-16112026-1930/",
+    "scheduleUrl": "https://lnb.com.br/nbb/tabela-de-jogos/",
+    "rosterUrls": [
+      "https://lnb.com.br/equipes/cruzeiro-basquete/",
+      "https://lnb.com.br/equipes/basq-cearense/"
+    ],
+    "note": "Elencos são os publicados nas páginas das equipes, não a escalação homologada da partida. Atletas selecionados para jogo são escolha de treinamento."
+  },
+  "competition": {
+    "externalKey": "TEST_NBB_MESA_2026_2027",
+    "name": "NBB 2026/2027 — TESTE DA MESA",
+    "sport": "BASQUETE",
+    "type": "TESTE",
+    "visibility": "INTERNA",
+    "status": "TESTE",
+    "isTest": true
+  },
+  "season": {
+    "externalKey": "TEST_NBB_SEASON_2026_2027",
+    "name": "2026/2027 — Teste",
+    "year": 2026,
+    "status": "PLANEJAMENTO",
+    "isTest": true
+  },
+  "stage": {
+    "externalKey": "TEST_NBB_STAGE_TURNO_1",
+    "name": "1º turno",
+    "type": "CLASSIFICACAO",
+    "roundNumber": 6
+  },
+  "game": {
+    "externalKey": "TEST_NBB_GAME_066",
+    "officialReferenceNumber": 66,
+    "name": "Itatiaiuçu Cruzeiro Basquete x Basquete Cearense",
+    "homeTeamKey": "TEST_NBB_CRU",
+    "awayTeamKey": "TEST_NBB_BCE",
+    "scheduledAtLocal": "2026-11-16T19:30:00-03:00",
+    "timeZone": "America/Sao_Paulo",
+    "venue": "Ginásio Dona Salomé — Barro Preto",
+    "city": "Belo Horizonte",
+    "state": "MG",
+    "country": "Brasil",
+    "status": "AGENDADO",
+    "homeScore": 0,
+    "awayScore": 0,
+    "quarters": [
+      {
+        "period": 1,
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "period": 2,
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "period": 3,
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "period": 4,
+        "homeScore": 0,
+        "awayScore": 0
+      }
+    ],
+    "periodMinutes": 10,
+    "shotClockSeconds": 24,
+    "playerFoulLimit": 5,
+    "notes": "Jogo espelho de treinamento. Placar inicial zero, sem copiar eventos oficiais."
+  },
+  "teams": [
+    {
+      "externalKey": "TEST_NBB_CRU",
+      "name": "Itatiaiuçu Cruzeiro Basquete",
+      "abbreviation": "CRU",
+      "role": "MANDANTE",
+      "headCoach": "Thiago Perez Pereira da Silva",
+      "roster": [
+        {
+          "number": 1,
+          "name": "Gerson",
+          "position": "Pivô",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 3,
+          "name": "Léo Abreu",
+          "position": "Armador",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 4,
+          "name": "Adyel",
+          "position": "Armador",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 5,
+          "name": "Asafe",
+          "position": "Ala",
+          "selectedForTestGame": false,
+          "birthDate": null
+        },
+        {
+          "number": 6,
+          "name": "Paulino",
+          "position": "Ala",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 7,
+          "name": "Cassiano",
+          "position": "Ala/Armador",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 8,
+          "name": "Emerson Silva",
+          "position": "Ala",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 10,
+          "name": "Ansaloni",
+          "position": "Pivô",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 11,
+          "name": "Ícaro",
+          "position": "Ala/Armador",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 14,
+          "name": "Menca",
+          "position": "Ala/Armador",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 23,
+          "name": "Nique Coleman",
+          "position": "Ala",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 30,
+          "name": "Da Silva",
+          "position": "Ala/Pivô",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 33,
+          "name": "Queirós",
+          "position": "Ala/Pivô",
+          "selectedForTestGame": true,
+          "birthDate": null
+        }
+      ]
+    },
+    {
+      "externalKey": "TEST_NBB_BCE",
+      "name": "Basquete Cearense",
+      "abbreviation": "BCE",
+      "role": "VISITANTE",
+      "headCoach": "Jelena Todorovic",
+      "roster": [
+        {
+          "number": 0,
+          "name": "Jeanzinho",
+          "position": "Armador",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 1,
+          "name": "Augusto",
+          "position": "Ala",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 2,
+          "name": "Luan",
+          "position": "Armador",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 3,
+          "name": "V. Cauã",
+          "position": "Pivô",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 7,
+          "name": "Samuel",
+          "position": "Pivô",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 10,
+          "name": "Tarek",
+          "position": "Pivô",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 11,
+          "name": "Dupree",
+          "position": "Armador",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 12,
+          "name": "Pyerri",
+          "position": "Pivô",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 17,
+          "name": "Cauã",
+          "position": "Pivô",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 22,
+          "name": "Tom",
+          "position": "Pivô",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 24,
+          "name": "Daniels",
+          "position": "Ala",
+          "selectedForTestGame": true,
+          "birthDate": null
+        },
+        {
+          "number": 70,
+          "name": "Gomes",
+          "position": "Armador",
+          "selectedForTestGame": false,
+          "birthDate": null
+        },
+        {
+          "number": 77,
+          "name": "Gabriel",
+          "position": "Ala",
+          "selectedForTestGame": true,
+          "birthDate": null
+        }
+      ]
+    }
+  ],
+  "simulation": {
+    "startersSuggested": {
+      "TEST_NBB_CRU": [
+        1,
+        3,
+        4,
+        7,
+        10
+      ],
+      "TEST_NBB_BCE": [
+        0,
+        1,
+        3,
+        7,
+        11
+      ]
+    },
+    "suggestedTests": [
+      "Abrir a Mesa sem rede",
+      "Iniciar cronômetro e período",
+      "Registrar 2 e 3 pontos e lance livre",
+      "Registrar rebotes, assistências, faltas e substituições",
+      "Conferir placar da transmissão",
+      "Sincronizar depois de reconectar",
+      "Finalizar e conferir súmula sem publicar dados oficiais"
+    ]
+  },
+  "warnings": [
+    "Não inferir datas de nascimento. Deixar nulas para teste de aprovação não-bloqueante conforme regra desejada.",
+    "A escolha dos 12 relacionados e dos 5 iniciais é SOMENTE simulação: não equivale à escalação oficial da LNB.",
+    "Este arquivo é um manifesto de importação, não um cadastro já executado na API do Stats."
+  ]
+}

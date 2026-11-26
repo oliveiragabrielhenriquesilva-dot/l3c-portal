@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+const fixture=JSON.parse(readFileSync(new URL('../data/testes/nbb-2026-2027-jogo-066.json',import.meta.url),'utf8'));
+assert.equal(fixture.fixtureId,'TEST-NBB-2026-2027-JOGO-066');
+assert.equal(fixture.competition.isTest,true);
+assert.equal(fixture.importPolicy.mustNotPublish,true);
+assert.equal(fixture.importPolicy.mustNotCountInRankings,true);
+assert.equal(fixture.teams.length,2);
+assert.equal(fixture.game.officialReferenceNumber,66);
+assert.equal(fixture.game.homeScore,0);
+assert.equal(fixture.game.awayScore,0);
+assert.equal(fixture.game.quarters.length,4);
+assert.equal(fixture.game.periodMinutes,10);
+assert.equal(fixture.game.shotClockSeconds,24);
+assert.equal(new Date(fixture.game.scheduledAtLocal).toISOString(),'2026-11-16T22:30:00.000Z');
+const teamKeys=new Set();
+for(const team of fixture.teams){
+  assert.ok(!teamKeys.has(team.externalKey),'Equipe duplicada');
+  teamKeys.add(team.externalKey);
+  assert.equal(team.roster.length,13,'Esperados 13 nomes cadastrados na LNB');
+  const numbers=team.roster.map(x=>x.number);
+  assert.equal(new Set(numbers).size,numbers.length,'Camisas duplicadas');
+  assert.equal(team.roster.filter(p=>p.selectedForTestGame).length,12,'Escalação simulada deve ter 12 jogadores');
+  assert.ok(team.roster.every(p=>p.birthDate===null),'Não inventar datas de nascimento');
+  const starters=fixture.simulation.startersSuggested[team.externalKey];
+  assert.equal(starters.length,5,'5 titulares simulados');
+  assert.equal(new Set(starters).size,5);
+  assert.ok(starters.every(n=>team.roster.some(p=>p.number===n&&p.selectedForTestGame)),'Titulares precisam estar relacionados');
+}
+assert.ok(teamKeys.has(fixture.game.homeTeamKey));
+assert.ok(teamKeys.has(fixture.game.awayTeamKey));
+console.log('OK: jogo 066, campeonato isolado, 2 equipes, 26 atletas, 24 relacionados simulados, 4 períodos, 0x0. Nenhum dado foi enviado à API.');
