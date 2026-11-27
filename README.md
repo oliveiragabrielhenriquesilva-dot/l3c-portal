@@ -1,4 +1,21 @@
-# l3c-portal
+# Liga 3 Colinas — Portal
+
+Portal público de competições esportivas, voltado à organização de temporadas, calendário, classificação e identidade das divisões.
+
+## Tecnologias
+Next.js e integração com serviços de gestão esportiva.
+
+## Minha atuação
+Definição de requisitos, regras de competição, experiência do usuário, prototipagem assistida por IA e validação funcional.
+
+## Projeto relacionado
+[L3C Stats](../l3c-stats) e [L3C API](../l3c-api). Consulte a documentação operacional abaixo para o estado da implantação.
+
+---
+
+## Referência operacional preservada
+
+### l3c-portal
 
 Portal público da Liga 3 Colinas (Next.js)
 
