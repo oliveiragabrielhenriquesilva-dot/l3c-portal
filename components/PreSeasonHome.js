@@ -41,8 +41,8 @@ async function loadHeroLogo(){
     const dir=await apiFetch('/v1/public/directory');
     const list=Array.isArray(dir?.seasons)?dir.seasons:[];
     const s=list.find(x=>x?.id===SEASON_2027_ID)||list.find(x=>x?.featured&&/adulto/i.test(String(x?.competition?.category||x?.competition?.name||'')));
-    return {logo:s?.logoUrl||s?.competition?.logoUrl||HERO_LOGO_FALLBACK,preSeason:s?.preSeason||null,startDate:s?.startDate||null};
-  }catch{return {logo:HERO_LOGO_FALLBACK,preSeason:null,startDate:null}}
+    return {logo:s?.logoUrl||s?.competition?.logoUrl||HERO_LOGO_FALLBACK,seal:s?.sealUrl||s?.competition?.sealUrl||(s?.logoUrl&&s?.competition?.logoUrl&&s.logoUrl!==s.competition.logoUrl?s.competition.logoUrl:null),preSeason:s?.preSeason||null,startDate:s?.startDate||null};
+  }catch{return {logo:HERO_LOGO_FALLBACK,seal:null,preSeason:null,startDate:null}}
 }
 
 async function loadNextGame(){
@@ -146,6 +146,6 @@ export default async function PreSeasonHome({page=false}={}){
     </div></section>}
     <Sponsors/>
   </>;
-  return <main className="p27-main"><PreSeasonTemplate cfg={cfg} logo={hero.logo} seal="/assets/brand/selo-l3c-adulto-livre.png" sealAlt="Selo L3C · Adulto Livre · Franca" year={2027}
+  return <main className="p27-main"><PreSeasonTemplate cfg={cfg} logo={hero.logo} seal={hero.seal||"/assets/brand/selo-l3c-adulto-livre.png"} sealAlt="Selo oficial L3C · Adulto Livre" year={2027}
     teams={teams} teamGroups={teamGroups} teamHref={t=>`/team/${slugify(t.name)}/?temporada=2027&s=${encodeURIComponent(SEASON_2027_ID)}`} teamsAllHref={`/equipes/?temporada=${encodeURIComponent(SEASON_2027_ID)}`} top={strip} bottom={bottom}/></main>
 }
