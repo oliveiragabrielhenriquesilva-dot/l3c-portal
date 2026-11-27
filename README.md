@@ -9,7 +9,7 @@ Next.js e integração com serviços de gestão esportiva.
 Definição de requisitos, regras de competição, experiência do usuário, prototipagem assistida por IA e validação funcional.
 
 ## Projeto relacionado
-[L3C Stats](../l3c-stats) e [L3C API](../l3c-api). Consulte a documentação operacional abaixo para o estado da implantação.
+[L3C Stats](https://github.com/oliveiragabrielhenriquesilva-dot/l3c-stats) e [L3C API](https://github.com/oliveiragabrielhenriquesilva-dot/l3c-api). Consulte a documentação operacional abaixo para o estado da implantação.
 
 ---
 
