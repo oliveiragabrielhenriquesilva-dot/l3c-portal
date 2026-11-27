@@ -3,7 +3,7 @@ import LiveRefresh from './LiveRefresh';
 import {Sponsors} from './SiteChrome';
 import {GameCard,ResultRow,TeamLogo} from './Cards';
 import {BRAND} from '../lib/brand';
-import {loadSeason,gameHref,teamHref} from '../lib/scopes';
+import {loadSeason,gameHref,teamHref,brandOf} from '../lib/scopes';
 import {liveWatch,gamePublicStatus,newsFallback} from '../lib/site';
 
 // Mesma composição e classes da inicial aprovada: hero, patrocinadores,
@@ -16,10 +16,11 @@ export default async function ApprovedSeasonHome({scope,season}){
  const q=`?temporada=${encodeURIComponent(season.key||season.id)}`;
  const news=newsFallback();
  const href=game=>gameHref(scope,season,game);
+ const brand=brandOf(scope,season);
  return <main className="home-page home-v0513"><LiveRefresh {...liveWatch(games)}/>
   <section className="home-v0513-hero"><div className="wide-shell home-v0513-hero-grid">
    <div className="home-v0513-hero-copy"><small>Temporada {season.year}</small><h1>{BRAND.name}</h1><p>{BRAND.tagline}.</p><div className="home-v0513-actions"><Link className="btn primary" href={`/jogos/${q}`}>Ver jogos</Link><Link className="btn" href={`/classificacao/${q}`}>Ver classificação</Link></div></div>
-   <div className="home-v0513-hero-art" aria-label={`Identidade oficial da temporada ${season.year}`}><div className="home-v0513-court-lines" aria-hidden="true"/><div className="home-v0513-ball-glow" aria-hidden="true"/><img src="/assets/brand/forjax-logo.png" alt={BRAND.name}/></div>
+   <div className="home-v0513-hero-art" aria-label={`Identidade oficial da temporada ${season.year}`}><div className="home-v0513-court-lines" aria-hidden="true"/><div className="home-v0513-ball-glow" aria-hidden="true"/><img className="l3c-season-logo" src={brand.logo} alt={brand.league||BRAND.name}/>{brand.seal&&brand.seal!==brand.logo&&<img className="l3c-season-seal" src={brand.seal} alt={brand.sealAlt||'Selo da Liga 3 Colinas'}/>}</div>
   </div></section>
   <Sponsors/>
   {offline&&<div className="wide-shell source-warning">Os dados estão temporariamente indisponíveis. Tente novamente em instantes.</div>}

@@ -26,7 +26,8 @@ const FALLBACK_SCOPES=[
 ];
 function scopeList(scopes){return scopes&&scopes.length?scopes:FALLBACK_SCOPES}
 // Adulto e Master mantêm as marcas oficiais já homologadas no cabeçalho; as demais competições usam a logo do cadastro.
-function scopeLogo(sc){return sc.key==='adulto'?BRAND.logo:sc.key==='master'?'/assets/brand/master-logo-v0518.png':(sc.logo||'/assets/brand/l3c-logo.png')}
+function scopeLogo(sc){return sc.logo||(sc.key==='master'?'/assets/brand/master-logo-v0518.png':BRAND.logo)}
+function scopeSeal(sc){return sc.seal&&sc.seal!==scopeLogo(sc)?sc.seal:null}
 
 function GlobalSwitcher({scopes,activeKey='adulto'}){
   return <div className="fe-global-switcher"><div className="fe-global-switcher-inner">
@@ -51,13 +52,14 @@ function PortalHeader({scopes,activeKey='adulto',path='/',navigation}){
   const adulto=sc.key==='adulto';
   const nav=adulto?forjaxNav:master?masterNav:sectionNav(sc.base);
   const logo=scopeLogo(sc);
+  const seal=scopeSeal(sc);
   const home=sc.base;
   const title=adulto?'Liga Forjax':master?'Liga Master':(sc.short||sc.name);
   const small=adulto?'de Basquete':master?'AVAB · L3C':'Liga 3 Colinas';
   const clean=value=>String(value).replace(/\/+$/,'')||'/';
   const active=(href)=>clean(href)===clean(home)?clean(path)===clean(home):clean(path).startsWith(clean(href));
   return <><GlobalSwitcher scopes={scopes} activeKey={sc.key}/><header className={`fe-site-header ${master?'is-master':''} ${path==='/'?'is-home':''}`}><div className="fe-site-header-inner">
-    <Link className="fe-site-brand" href={home}><span className="fe-site-brand-mark"><img src={logo} alt={title}/></span><span>{title}<small>{small}</small></span></Link>
+    <Link className="fe-site-brand" href={home}><span className="fe-site-brand-mark"><img src={logo} alt={title}/></span><span>{title}<small>{small}</small></span>{seal&&<span className="fe-site-brand-seal"><img src={seal} alt={`Selo ${title}`}/></span>}</Link>
     <nav className="fe-site-nav">{nav.map(([h,l])=><Link className={active(h)?'active':''} key={h} href={navigationHref(h,navigation)}>{l}</Link>)}</nav>
   </div></header></>;
 }
@@ -76,7 +78,7 @@ export function CommercialPartners(){const master=['Patrocinador Master','Forjax
   ['Fotos Oficiais','Trinta Dezoito','/assets/sponsors/trinta-dezoito.png'],
 ];const partner=([label,name,src])=><div className="commercial-partner-item" key={name}><div className="commercial-label"><span></span><b>{label}</b><span></span></div><img src={src} alt={name}/></div>;return <section className="commercial-partners" aria-label="Parceiros oficiais da Liga"><div className="wide-shell"><div className="commercial-partner-master"><div className="commercial-partner-item master"><div className="commercial-label"><span></span><b>{master[0]}</b><span></span></div><img src={master[2]} alt={master[1]}/></div></div><div className="commercial-partner-row three">{firstRow.map(partner)}</div><div className="commercial-partner-row four">{secondRow.map(partner)}</div></div></section>}
 
-export function Footer({navigation}={}){return <><CommercialPartners/><footer className="premium-footer"><div className="wide-shell footer-main"><div className="footer-brand"><img src={BRAND.logo} alt="Liga Forjax"/><div><b>Liga Forjax de Basquete</b><strong>{BRAND.tagline}</strong></div></div><div className="footer-col"><h4>Campeonato</h4><Link href={navigationHref('/jogos/',navigation)}>Jogos</Link><Link href={navigationHref('/classificacao/',navigation)}>Classificação</Link><Link href={navigationHref('/lideres/',navigation)}>Líderes</Link><Link href={navigationHref('/equipes/',navigation)}>Equipes</Link><Link href={navigationHref('/atletas/',navigation)}>Atletas</Link></div><div className="footer-col"><h4>A Liga</h4><Link href="/noticias/">Notícias</Link><Link href="/adriano/">Conheça o AdrIAno</Link><Link href="/sobre/">Sobre a Liga</Link>{CONTACT.email&&<a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>}{CONTACT.whatsapp&&<a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" rel="noopener noreferrer">WhatsApp da Liga</a>}<Link href="/">Página inicial</Link></div></div><div className="footer-copy"><span>© {new Date().getFullYear()} <b>Liga Forjax de Basquete</b>. Todos os direitos reservados.</span><span>Site oficial <i>•</i> {CURRENT_SEASON_LABEL}</span></div></footer></>}
+export function Footer({navigation,scopes=[],activeKey='adulto'}={}){const current=scopeList(scopes).find(x=>x.key===activeKey)||scopeList(scopes)[0];const footerLogo=scopeLogo(current);return <><CommercialPartners/><footer className="premium-footer"><div className="wide-shell footer-main"><div className="footer-brand"><img src={footerLogo} alt={current?.name||"Liga 3 Colinas"}/><div><b>Liga Forjax de Basquete</b><strong>{BRAND.tagline}</strong></div></div><div className="footer-col"><h4>Campeonato</h4><Link href={navigationHref('/jogos/',navigation)}>Jogos</Link><Link href={navigationHref('/classificacao/',navigation)}>Classificação</Link><Link href={navigationHref('/lideres/',navigation)}>Líderes</Link><Link href={navigationHref('/equipes/',navigation)}>Equipes</Link><Link href={navigationHref('/atletas/',navigation)}>Atletas</Link></div><div className="footer-col"><h4>A Liga</h4><Link href="/noticias/">Notícias</Link><Link href="/adriano/">Conheça o AdrIAno</Link><Link href="/sobre/">Sobre a Liga</Link>{CONTACT.email&&<a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>}{CONTACT.whatsapp&&<a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" rel="noopener noreferrer">WhatsApp da Liga</a>}<Link href="/">Página inicial</Link></div></div><div className="footer-copy"><span>© {new Date().getFullYear()} <b>Liga Forjax de Basquete</b>. Todos os direitos reservados.</span><span>Site oficial <i>•</i> {CURRENT_SEASON_LABEL}</span></div></footer></>}
 
 export function Sponsors(){const sponsors=[
   ['Molten','/assets/sponsors/molten-current.png'],['Dsportivo','/assets/sponsors/dsportivo-current.png'],['Chui Esportes','/assets/sponsors/chui-current.png'],['Gatorade','/assets/sponsors/gatorade-current.png'],['UniCesumar','/assets/sponsors/unicesumar-current.png'],['Trinta Dezoito','/assets/sponsors/trinta-dezoito.png'],['Cozinha Santomaz','/assets/sponsors/cozinha-santomaz.png']

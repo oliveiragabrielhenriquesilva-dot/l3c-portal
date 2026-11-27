@@ -22,5 +22,5 @@ export default function Chrome({children,scopes=[]}){
   if(standalone)return <>{children}</>;
   const key=activeScopeKey(p,search,scopes);
   const navigation=navigationContext(p,search,scopes.find(scope=>scope.key===key));
-  return <><Header path={p} scopes={scopes} activeKey={key} navigation={navigation}/> {children}<Footer navigation={navigation}/></>;
+  return <><Header path={p} scopes={scopes} activeKey={key} navigation={navigation}/> {children}<Footer navigation={navigation} scopes={scopes} activeKey={key}/></>;
 }
