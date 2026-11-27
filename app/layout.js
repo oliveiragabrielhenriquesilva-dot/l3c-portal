@@ -22,7 +22,7 @@ export const dynamic='force-dynamic';
 export default async function RootLayout({children}){
   let scopes=[];
   try{
-    scopes=(await getScopes()).map(s=>({key:s.key,name:s.name,short:s.key==='adulto'?'Liga Forjax':s.key==='master'?'Liga Master':s.name,base:s.base,logo:s.logo,defaultSeasonKey:s.defaultSeasonKey,seasonIds:s.seasons.map(x=>x.id)}));
+    scopes=(await getScopes()).map(s=>({key:s.key,name:s.name,short:s.key==='adulto'?'Liga Forjax':s.key==='master'?'Liga Master':s.name,base:s.base,logo:s.logo,seal:s.seal,defaultSeasonKey:s.defaultSeasonKey,seasonIds:s.seasons.map(x=>x.id)}));
   }catch{}
   return <html lang="pt-BR"><body><Suspense fallback={null}><Chrome scopes={scopes}>{children}</Chrome></Suspense></body></html>;
 }
